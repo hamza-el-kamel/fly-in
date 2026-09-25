@@ -38,6 +38,8 @@ class Network:
         """
         Add a zone to the network graph.
         """
+        if zone.name in self.zones:
+            raise ValueError(f"duplicate zone name '{zone.name}'")
         self.graph[zone.name] = []
         self.zones[zone.name] = zone
         if zone.is_start:
@@ -56,6 +58,11 @@ class Network:
 
         if zone2.name not in self.graph:
             self.zone_to_network(zone2)
+
+        if zone2.name in self.graph[zone1.name]:
+            raise ValueError(
+                f"duplicate connection '{zone1.name}-{zone2.name}'"
+                )
 
         self.graph[zone1.name].append(zone2.name)
         self.graph[zone2.name].append(zone1.name)

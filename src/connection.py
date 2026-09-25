@@ -17,3 +17,4 @@ class Connection:
         self.zone2 = zone2
         self.count_drones = count_drones
         self.max_link_capacity = max_link_capacity
+        self.name = f"{zone1.name}-{zone2.name}"

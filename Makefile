@@ -1,11 +1,11 @@
 run:
-	python -m src
+	python3 -m main
 
 install:
 	pip install -r requirements.txt
 
 debug:
-	python -m pdb -m src
+	python3 -m pdb -m main
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true

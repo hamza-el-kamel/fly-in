@@ -39,5 +39,22 @@ class Zone:
         self.color = color
         self.max_drones = max_drones
         self.zone_type = zone_type
-        # self.connections: list["Connection"] = []
-        # self.neighbors: list["neighbors"] = []
+
+    def is_zone_blocked(self) -> bool:
+        """
+        check if the zone is blocked and return true
+        """
+        return self.zone_type == ZoneType.blocked
+
+    def movement_cost(self) -> int:
+        """
+        check if the zone is normal or restricted or priority and return.
+        """
+        if self.zone_type == ZoneType.normal:
+            return 1
+        elif self.zone_type == ZoneType.restricted:
+            return 2
+        elif self.zone_type == ZoneType.priority:
+            return 1
+        else:
+            raise ValueError("cannot get movement cost of a blocked zone")
